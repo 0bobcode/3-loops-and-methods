@@ -9,4 +9,24 @@ const months = [
 ];
 
 //initialzize current date
-let today = new Date()
+let today = new Date();
+let currentMonth = today.getMonth();
+let currentYear = today.getFullYear();
+
+function renderCalender(month,year){
+daysContainer.innerHTML = "";
+monthYear.textContent = `month:${month}/year:${year}`
+return
+}
+
+renderCalender(12,2024)
+
+const firstDay = new Date(year,month,1).getDay();
+const daysInMonths = new Date(year,month+1,0).getDate()
+const isCurrentMonth = (month===today.getMonth())&&(year===today.getFullYear())
+
+for(let i = 0;i<firstDay;i++){
+    let blankCell = document.createElement("div");
+    blankCell.classList.add("blank")
+    daysContainer.appendChild(blankCell)
+}

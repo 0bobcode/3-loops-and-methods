@@ -30,3 +30,36 @@ for(let i = 0;i<firstDay;i++){
     blankCell.classList.add("blank")
     daysContainer.appendChild(blankCell)
 }
+
+//create cells for each days of the month 
+for(let day= 0;day<=daysInMonth;day++){
+    const daysCell = document.createElement("div");
+    daysCell.textContent = day;
+    if(isCurrentMonth&&day == today.getDate()){
+        const todaySpan = document.createElement("span");
+        todaySpan.textContent = day;
+        todaySpan.classList.add("current-day");
+        daysCell.innerHTML = ""
+    }
+    daysCell.appendChild(todaySpan)
+}
+
+prevBtn.addEventListener("click",()=>{
+    currentMonth--
+    if(currentMonth<0){
+        currentMonth = 11
+        currentYear--
+        
+    }
+    renderCalender(currentMonth,currentYear)
+});
+
+nextBtn.addEventListener("click",()=>{
+    currentMonth++
+    if(currentMonth>=11){
+        currentMonth = 0
+        currentYear++
+    }
+    renderCalender(currentMonth,currentYear)
+})
+renderCalender(currentMonth,currentYear)

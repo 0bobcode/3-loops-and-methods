@@ -5,61 +5,60 @@ const daysContainer = document.getElementById("days")
 
 //array of month names
 const months = [
-    "January","February","March","April","May","June","July","August","September","October","November","December"
+    "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
 ];
-
+//to acces an arrays element you have to write the name of the array followed by square brackets and mention possition of element starting from 0
+console.log(months[0])
 //initialzize current date
-let today = new Date();
+const today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 
-function renderCalender(month,year){
-daysContainer.innerHTML = "";
-monthYear.textContent = `month:${month}/year:${year}`
-return
-}
+function renderCalender(month, year) {
+    daysContainer.innerHTML = "";
+    monthYear.textContent = `${months[month]} ${year}`;
 
-renderCalender(12,2024)
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate()
+    const isCurrentMonth = (month === today.getMonth()) && (year === today.getFullYear());
 
-const firstDay = new Date(year,month,1).getDay();
-const daysInMonths = new Date(year,month+1,0).getDate()
-const isCurrentMonth = (month===today.getMonth())&&(year===today.getFullYear())
-
-for(let i = 0;i<firstDay;i++){
-    let blankCell = document.createElement("div");
-    blankCell.classList.add("blank")
-    daysContainer.appendChild(blankCell)
-}
-
-//create cells for each days of the month 
-for(let day= 0;day<=daysInMonth;day++){
-    const daysCell = document.createElement("div");
-    daysCell.textContent = day;
-    if(isCurrentMonth&&day == today.getDate()){
-        const todaySpan = document.createElement("span");
-        todaySpan.textContent = day;
-        todaySpan.classList.add("current-day");
-        daysCell.innerHTML = ""
+    for (let i = 0; i < firstDay; i++) {
+        let blankCell = document.createElement("div");
+        blankCell.classList.add("blank")
+        daysContainer.appendChild(blankCell)
     }
-    daysCell.appendChild(todaySpan)
+    // Create cells for each day of the month
+    for (let day = 1; day <= daysInMonth; day++) { // Start from day=1
+        const dayCell = document.createElement("div");
+        dayCell.textContent = day;
+
+        if (isCurrentMonth && day === today.getDate()) {
+            dayCell.classList.add("current-day"); // Highlight current day
+        }
+
+        daysContainer.appendChild(dayCell);
+    }
+
 }
 
-prevBtn.addEventListener("click",()=>{
+
+
+prevBtn.addEventListener("click", () => {
     currentMonth--
-    if(currentMonth<0){
+    if (currentMonth < 0) {
         currentMonth = 11
         currentYear--
-        
+
     }
-    renderCalender(currentMonth,currentYear)
+    renderCalender(currentMonth, currentYear)
 });
 
-nextBtn.addEventListener("click",()=>{
+nextBtn.addEventListener("click", () => {
     currentMonth++
-    if(currentMonth>=11){
+    if (currentMonth >= 11) {
         currentMonth = 0
         currentYear++
     }
-    renderCalender(currentMonth,currentYear)
+    renderCalender(currentMonth, currentYear)
 })
-renderCalender(currentMonth,currentYear)
+renderCalender(currentMonth, currentYear)

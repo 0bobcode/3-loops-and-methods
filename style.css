@@ -1,5 +1,9 @@
 *{
-    font-family: "Rubik Vinyl", serif;
+     font-family: "Rubik Vinyl", serif;    
+    
+        
+        font-weight: 900;
+            
     margin: 0;
     padding: 0;
     letter-spacing: 2px;
@@ -42,8 +46,12 @@ main {
     padding: 10px;
     border-top-left-radius:10px ;
     border-top-right-radius:10px;
-    
-    
+    align-items: center;
+    border-left: 3px #eee solid;
+        border-right: 3px #eee solid;
+        border-top: 3px #eee solid;
+    font-weight: 900;
+    font-size: 1.3rem;
 }
 
 .header button {
@@ -71,6 +79,12 @@ main {
     border-bottom: 2px #ddd solid;
 }
 
+.weekdays{
+    border-left: 3px #eee solid;
+    border-right:3px #eee solid;
+    
+}
+
 .days div{
     padding: 15px 0px;
     border-bottom: 1px #eee solid;
@@ -78,7 +92,11 @@ main {
     transition: background-color 0.3s ease-in-out;
 
 }
-
+.days{
+    border-left: 3px #eee solid;
+        border-right: 3px #eee solid;
+        border-bottom: 3px #eee solid;
+}
 .days div:hover{
     background-color: #f1f1f1;
 }
@@ -87,3 +105,14 @@ main {
     background-color: rgb(255, 255, 201);
     border-radius: 10px;
 }
+
+
+footer{
+    background-color: black;
+    color: #ffffff;
+    padding:15px 0px;
+    text-align: center;
+    margin-top: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    }
